@@ -6,24 +6,45 @@
 
 import re
 
+
 def pw_length(pw):
-    pass
+    len_regex = re.compile(r'(\S){8,}')
+    return len_regex.search(pw) is not None
 
 
 def pw_upper_lower(pw):
-    pass
+    has_upper_regex = re.compile(r'[A-Z]+')
+    has_lower_regex = re.compile(r'[a-z]+')
+    return (has_upper_regex.search(pw) is not None
+            and has_lower_regex.search(pw) is not None)
 
 
 def pw_has_a_num(pw):
-    pass
+    has_num_regex = re.compile(r'(\d)+')
+    return has_num_regex.search(pw) is not None
 
 
 def main():
+    password = input("Enter the password to be tested: ")
 
-#get the password as a string
-#check if the string is at least 8 characters
-#check if the string contains both uppercase and lowercase characters
-#check if the string contains at least 1 digit
+    length_ok = pw_length(password)
+
+    case_ok = pw_upper_lower(password)
+
+    number_ok = pw_has_a_num(password)
+
+    if not length_ok:
+        print('The password must be at least eight characters.')
+
+    if not case_ok:
+        print('The password must include lower and uppercase characters. ')
+
+    if not number_ok:
+        print('The password must include at least one number.')
+
+    if length_ok and case_ok and number_ok:
+        print('Acceptable password.')
+
 
 if __name__ == '__main__':
     main()

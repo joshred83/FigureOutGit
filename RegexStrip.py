@@ -17,10 +17,10 @@ def reg_ex_strip(string, remove=None):
         return string
 
     else:
-        starts_with = "r'^" + remove + "+'"
+        starts_with = "^" + remove + "+"
         starts_with = re.compile(starts_with)
         string = starts_with.sub('', string)
-        ends_with = "r'" + remove + "+$"
+        ends_with = remove + "+$"
         ends_with = re.compile(ends_with)
         string = ends_with.sub('', string)
         return string
@@ -32,8 +32,8 @@ def main():
     modified_string = reg_ex_strip(the_string)
     print(modified_string)
 
-    the_string = '*****this be the other string*****'
-    modified_string = reg_ex_strip(the_string, remove='*')
+    the_string = 'aaaaathis be the other stringaaaaa'
+    modified_string = reg_ex_strip(the_string, remove='a')
     print(modified_string)
 
 

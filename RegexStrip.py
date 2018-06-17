@@ -15,12 +15,12 @@ def reg_ex_strip(string, remove=None):
         string = starts_with.sub('',string)
         string = ends_with.sub('', string)
         return string
-
     else:
-        starts_with = "r'^" + remove + "+'"
+        remove = re.escape(remove)
+        starts_with = "^" + remove + "+"
         starts_with = re.compile(starts_with)
         string = starts_with.sub('', string)
-        ends_with = "r'" + remove + "+$"
+        ends_with = remove + "+$"
         ends_with = re.compile(ends_with)
         string = ends_with.sub('', string)
         return string

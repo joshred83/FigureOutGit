@@ -33,7 +33,7 @@ def main():
     print(modified_string)
 
     the_string = '*****this be the other string*****'
-    modified_string = reg_ex_strip(the_string, remove='*')
+    modified_string = reg_ex_strip(the_string, '*')
     print(modified_string)
 
 
